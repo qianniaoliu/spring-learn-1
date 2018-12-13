@@ -1,0 +1,7 @@
+# Application Config
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+com.athena.example.springbootextension.config.EnableAthenaConfig
+
+# Application Listeners
+org.springframework.context.ApplicationListener=\
+com.athena.example.springbootextension.listener.CustomListener
