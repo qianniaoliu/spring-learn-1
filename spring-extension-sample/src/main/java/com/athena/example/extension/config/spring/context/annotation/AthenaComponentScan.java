@@ -1,4 +1,4 @@
-package com.athena.example.extension.config.spring.annotation;
+package com.athena.example.extension.config.spring.context.annotation;
 
 import org.springframework.context.annotation.Import;
 
