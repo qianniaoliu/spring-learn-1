@@ -5,7 +5,8 @@
 	<modules>
 		<module>spring-extension-sample</module>
 		<module>spring-boot-extension</module>
-	</modules>
+        <module>spring-nacos-sample</module>
+    </modules>
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
