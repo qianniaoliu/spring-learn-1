@@ -2,6 +2,7 @@ package com.athena.sample.springnacossample;
 
 import com.alibaba.nacos.api.config.annotation.NacosValue;
 import com.alibaba.nacos.spring.context.annotation.config.NacosPropertySource;
+import com.alibaba.nacos.spring.context.annotation.discovery.EnableNacosDiscovery;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.context.annotation.Configuration;
@@ -30,6 +31,7 @@ public class SpringNacosSampleBootstrap {
         String getNacos(){
             return athenaName;
         }
+
     }
 
     @NacosPropertySource(dataId = "application.properties", autoRefreshed = true)

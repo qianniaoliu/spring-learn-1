@@ -7,6 +7,9 @@
 		<module>spring-boot-extension</module>
         <module>spring-nacos-sample</module>
         <module>spring-reactive</module>
+        <module>spring-rest-feign</module>
+        <module>springmvc-test</module>
+        <module>data-structure-algorithm</module>
     </modules>
 	<parent>
 		<groupId>org.springframework.boot</groupId>
@@ -30,10 +33,21 @@
 		<dubbo.version>2.6.5</dubbo.version>
 		<dubbo.spring.version>1.0.2</dubbo.spring.version>
 		<sentinel.version>1.4.0</sentinel.version>
+		<jax.rs.version>2.1.1</jax.rs.version>
+		<spring-cloud-openfeign.version>2.0.2.RELEASE</spring-cloud-openfeign.version>
 	</properties>
 
 	<dependencyManagement>
+
 		<dependencies>
+			<!-- JAX-RS -->
+			<dependency>
+				<groupId>javax.ws.rs</groupId>
+				<artifactId>javax.ws.rs-api</artifactId>
+				<version>${jax.rs.version}</version>
+			</dependency>
+
+
 			<dependency>
 				<groupId>org.springframework.cloud</groupId>
 				<artifactId>spring-cloud-dependencies</artifactId>
@@ -61,6 +75,11 @@
 				<artifactId>rxjava</artifactId>
 				<version>3.0.0-RC3</version>
 			</dependency>
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>fastjson</artifactId>
+                <version>1.2.56</version>
+            </dependency>
 		</dependencies>
 	</dependencyManagement>
 

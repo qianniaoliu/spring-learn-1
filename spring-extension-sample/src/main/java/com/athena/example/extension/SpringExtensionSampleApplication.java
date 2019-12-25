@@ -14,12 +14,12 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 public class SpringExtensionSampleApplication {
 
     public static void main(String[] args) {
-        ConfigurableApplicationContext athenaContext = new AnnotationConfigApplicationContext();
+        /*ConfigurableApplicationContext athenaContext = new AnnotationConfigApplicationContext();
         athenaContext.setId("余生");
         ((AnnotationConfigApplicationContext) athenaContext).registerBean("helloworld", String.class);
-        athenaContext.refresh();
+        athenaContext.refresh();*/
         ConfigurableApplicationContext context = new SpringApplicationBuilder(SpringExtensionSampleApplication.class)
-                .parent(athenaContext)
+//                .parent(athenaContext)
                 .run(args);
     }
 }

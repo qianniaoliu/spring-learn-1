@@ -4,6 +4,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.Callable;
@@ -47,5 +48,10 @@ public class AsyncController {
     @PostConstruct
     public void postCon(){
         System.out.println("postCon方法执行!");
+    }
+
+    @PreDestroy
+    public void destroy(){
+        System.out.println("destroy方法执行!");
     }
 }

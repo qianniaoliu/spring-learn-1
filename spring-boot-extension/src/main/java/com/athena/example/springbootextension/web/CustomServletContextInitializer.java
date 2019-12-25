@@ -5,6 +5,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.web.servlet.ServletContextInitializer;
 import org.springframework.boot.web.servlet.ServletRegistrationBean;
+import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
 
 import javax.servlet.ServletContext;
@@ -22,5 +23,11 @@ public class CustomServletContextInitializer implements ServletContextInitialize
     public void onStartup(ServletContext servletContext) throws ServletException {
         ServletRegistrationBean registrationBean = new ServletRegistrationBean(new AsyncServlet(),"/asyncServlet");
         LOGGER.info("自定义注册Servlet！");
+    }
+
+
+    @Bean
+    public ServletRegistrationBean servletRegistrationBean(){
+        return new ServletRegistrationBean(new AsyncServlet(),"/asyncServlet");
     }
 }

@@ -21,7 +21,7 @@ public class SpringBootExtensionApplication {
 
         ConfigurableApplicationContext context = new SpringApplicationBuilder(SpringBootExtensionApplication.class)
                 .profiles("yusheng")
-                .web(WebApplicationType.NONE)
+                .web(WebApplicationType.SERVLET)
                 .run(args);
         String helloWorld = (String) context.getBean("helloWorld");
         LOGGER.info("helloWorld Bean:" + helloWorld);

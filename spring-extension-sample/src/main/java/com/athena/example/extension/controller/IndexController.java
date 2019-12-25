@@ -4,6 +4,8 @@ import com.athena.example.extension.config.annotation.Reference;
 import com.athena.example.extension.config.spring.AthenaBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.ApplicationEvent;
+import org.springframework.context.ApplicationListener;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -11,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @auther: yusheng
  */
 @RestController
-public class IndexController {
+public class IndexController implements ApplicationListener {
 
     @Autowired
     private AthenaBean athenaBean;
@@ -25,6 +27,14 @@ public class IndexController {
 
     @GetMapping("/get/address")
     public String index(){
+        synchronized (IndexController.class){
+            System.out.println(11111);
+        }
         return beanName;
+    }
+
+    @Override
+    public void onApplicationEvent(ApplicationEvent event) {
+        System.out.printf("11");
     }
 }
