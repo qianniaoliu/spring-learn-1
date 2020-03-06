@@ -20,7 +20,9 @@ public class LinkedListDemo {
 
         private int n;
 
-        private int count;
+        private int head = 0;
+
+        private int tail = 0;
 
 
         public LoopLinked(int n) {
@@ -28,11 +30,36 @@ public class LinkedListDemo {
             this.data = new String[n];
         }
 
-        public boolean push(String s){
-
-            return false;
+        public boolean enqueue(String s){
+            if((tail + 1) % n == head){
+                return false;
+            }
+            data[tail] = s;
+            tail = (tail + 1) % n;
+            return true;
         }
 
+        public String dequeue(){
+            if(head == tail){
+                return null;
+            }
+            String res = data[head];
+            head = (head + 1) % n;
+            return res;
+        }
+
+    }
+
+
+    public static void main(String[] args) {
+        LoopLinked loopLinked = new LoopLinked(3);
+        loopLinked.enqueue("a");
+        loopLinked.enqueue("b");
+        loopLinked.enqueue("c");
+
+        System.out.println(loopLinked.dequeue());
+        System.out.println(loopLinked.dequeue());
+        System.out.println(loopLinked.dequeue());
     }
 
 
