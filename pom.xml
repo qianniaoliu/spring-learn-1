@@ -10,7 +10,8 @@
         <module>spring-rest-feign</module>
         <module>springmvc-test</module>
         <module>data-structure-algorithm</module>
-    </modules>
+		<module>nacos-spring-extension</module>
+	</modules>
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
@@ -80,6 +81,18 @@
                 <artifactId>fastjson</artifactId>
                 <version>1.2.56</version>
             </dependency>
+
+			<dependency>
+				<groupId>com.alibaba.csp</groupId>
+				<artifactId>sentinel-core</artifactId>
+				<version>1.7.1</version>
+			</dependency>
+
+			<dependency>
+				<groupId>com.alibaba.csp</groupId>
+				<artifactId>sentinel-transport-simple-http</artifactId>
+				<version>1.7.1</version>
+			</dependency>
 		</dependencies>
 	</dependencyManagement>
 

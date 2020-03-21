@@ -9,29 +9,13 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>spring-nacos-sample</artifactId>
+    <artifactId>nacos-spring-extension</artifactId>
 
     <properties>
         <spring.boot.nacos.version>0.2.7</spring.boot.nacos.version>
     </properties>
 
-
     <dependencies>
-        <!-- Spring Boot dependencies -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-actuator</artifactId>
-        </dependency>
-
         <dependency>
             <groupId>com.alibaba.boot</groupId>
             <artifactId>nacos-config-spring-boot-starter</artifactId>
@@ -44,4 +28,5 @@
             <version>${spring.boot.nacos.version}</version>
         </dependency>
     </dependencies>
+
 </project>
