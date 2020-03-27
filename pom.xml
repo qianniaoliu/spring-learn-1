@@ -11,7 +11,8 @@
         <module>springmvc-test</module>
         <module>data-structure-algorithm</module>
 		<module>nacos-spring-extension</module>
-	</modules>
+        <module>think-in-spring</module>
+    </modules>
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>

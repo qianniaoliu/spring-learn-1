@@ -23,7 +23,7 @@ public class SpringNacosSampleBootstrap {
     @RestController
     public class NacosController{
 
-        @NacosValue(value = "${athena.name}")
+        @NacosValue(value = "${athena.name}", autoRefreshed = true)
         private String athenaName;
 
 
@@ -34,7 +34,7 @@ public class SpringNacosSampleBootstrap {
 
     }
 
-    @NacosPropertySource(dataId = "application.properties", autoRefreshed = true)
+    @NacosPropertySource(dataId = "nacos-config-sample", autoRefreshed = true)
     @Configuration
     public class NacosPropertSource{
 
