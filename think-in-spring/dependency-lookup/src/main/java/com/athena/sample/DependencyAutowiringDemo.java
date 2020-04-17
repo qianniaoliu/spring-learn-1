@@ -36,6 +36,9 @@ public class DependencyAutowiringDemo {
     @Value("${athena}")
     private String athena;
 
+    @Autowired
+    private String helloWorld;
+
     public static void main(String[] args) {
         AnnotationConfigApplicationContext applicationContext = new AnnotationConfigApplicationContext();
         applicationContext.register(DependencyAutowiringDemo.class);
@@ -45,6 +48,11 @@ public class DependencyAutowiringDemo {
         values.put("athena", "nacos");
         MapPropertySource mapPropertySource = new MapPropertySource("custom-properties", values);
         mutablePropertySources.addLast(mapPropertySource);
+
+        applicationContext.addBeanFactoryPostProcessor(beanFactory -> {
+            beanFactory.registerResolvableDependency(String.class, "Hello,World");
+        });
+
         applicationContext.refresh();
         DependencyAutowiringDemo demo = applicationContext.getBean(DependencyAutowiringDemo.class);
 
@@ -52,6 +60,7 @@ public class DependencyAutowiringDemo {
         System.out.println(demo.users);
         System.out.println(demo.qualifierUsers);
         System.out.println(demo.groupUsers);
+        System.out.println(demo.helloWorld);
         applicationContext.close();
     }
 
