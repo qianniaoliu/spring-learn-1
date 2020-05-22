@@ -15,6 +15,10 @@ public class ClassReaderDemo {
         AnnotationMetadataReadingVisitor visitor = new AnnotationMetadataReadingVisitor(Thread.currentThread().getContextClassLoader());
         classReader.accept(visitor, ClassReader.SKIP_DEBUG);
         System.out.println(111);
+        String[] arr = new String[]{"A", "B"};
+        Object xx = arr;
+        System.out.println(xx);
+        System.out.println(Math.pow(3, 3));
 
     }
 

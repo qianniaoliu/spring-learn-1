@@ -13,6 +13,7 @@
 		<module>nacos-spring-extension</module>
         <module>think-in-spring</module>
         <module>bytecode-technique</module>
+        <module>nio-demo</module>
     </modules>
 	<parent>
 		<groupId>org.springframework.boot</groupId>
@@ -94,6 +95,17 @@
 				<groupId>com.alibaba.csp</groupId>
 				<artifactId>sentinel-transport-simple-http</artifactId>
 				<version>1.7.1</version>
+			</dependency>
+			<dependency>
+				<groupId>org.mybatis</groupId>
+				<artifactId>mybatis</artifactId>
+				<version>3.5.4</version>
+			</dependency>
+
+			<dependency>
+				<groupId>io.netty</groupId>
+				<artifactId>netty-all</artifactId>
+				<version>4.1.49.Final</version>
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
