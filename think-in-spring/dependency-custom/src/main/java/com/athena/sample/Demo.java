@@ -22,9 +22,8 @@ public class Demo {
         Demo demo = applicationContext.getBean(Demo.class);
         System.out.println(demo.echoServiceList.size());
 
-        ExecutorComposite<EchoService> executorComposite = new ExecutorComposite<>(demo.echoServiceList);
-        Object result = executorComposite.execute("noRes",new Class[]{String.class}, new String[]{"Hello,World"} );
-        System.out.println(result);
+        ExecutorComposite<EchoService> executorComposite = new ExecutorComposite<>(EchoService.class, demo.echoServiceList);
+        executorComposite.execute("noRes",new Class[]{String.class}, new Object[]{"Hello,World"} );
         applicationContext.close();
     }
 
@@ -39,16 +38,15 @@ public class Demo {
             this.objects = objects;
         }
 
-        public Object execute(String methodName, Class[] paramTypes, Object[] args){
+        public void execute(String methodName, Class[] paramTypes, Object[] args){
             try {
                 Method method = clazz.getMethod(methodName, paramTypes);
                 for(S source : objects){
-                    return method.invoke(source, args);
+                    method.invoke(source, args);
                 }
             } catch (Exception e) {
                 e.printStackTrace();
             }
-            return null;
         }
     }
 }

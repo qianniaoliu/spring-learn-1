@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:athena="http://www.athena.org/schema/athena"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       		http://www.springframework.org/schema/beans/spring-beans.xsd
+            http://www.athena.org/schema/athena
+            http://www.athena.org/schema/athena/spring-athena.xsd">
+
+    <athena:athena id="echoService" className="com.athena.simple.EchoService" version="0.0.1" alias="athena-test"></athena:athena>
+</beans>
