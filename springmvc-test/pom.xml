@@ -31,11 +31,6 @@
             <artifactId>sentinel-transport-simple-http</artifactId>
         </dependency>
         <dependency>
-            <groupId>com.jd</groupId>
-            <artifactId>jsf</artifactId>
-            <version>1.6.9</version>
-        </dependency>
-        <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>fastjson</artifactId>
             <version>1.2.70</version>
