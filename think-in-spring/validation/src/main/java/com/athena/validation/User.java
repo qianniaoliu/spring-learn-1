@@ -1,4 +1,4 @@
-package com.athena.sample;
+package com.athena.validation;
 
 /**
  * @author yusheng

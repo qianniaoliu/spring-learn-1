@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+
+<xsd:schema xmlns="http://www.athena.org/schema/athena"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:athena="http://www.athena.org/schema/athena"
+            targetNamespace="http://www.athena.org/schema/athena">
+
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace"/>
+
+    <xsd:complexType name="identifiedType" abstract="true">
+        <xsd:attribute name="id" type="xsd:string">
+            <xsd:annotation>
+                <xsd:documentation><![CDATA[ 主键id ]]></xsd:documentation>
+            </xsd:annotation>
+        </xsd:attribute>
+        <xsd:attribute name="className" type="xsd:string">
+            <xsd:annotation>
+                <xsd:documentation><![CDATA[ 类名称 ]]></xsd:documentation>
+            </xsd:annotation>
+        </xsd:attribute>
+
+    </xsd:complexType>
+
+    <xsd:complexType name="dubboService">
+        <xsd:complexContent>
+            <xsd:extension base="identifiedType">
+                <xsd:attribute name="version" type="xsd:string"/>
+                <xsd:attribute name="alias" type="xsd:string">
+                    <xsd:annotation>
+                        <xsd:documentation><![CDATA[ 属性别名 ]]></xsd:documentation>
+                    </xsd:annotation>
+                </xsd:attribute>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+
+    <xsd:element name="athena" type="athena:dubboService"/>
+</xsd:schema>

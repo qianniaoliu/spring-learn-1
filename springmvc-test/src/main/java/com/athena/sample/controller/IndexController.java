@@ -6,9 +6,14 @@ import com.alibaba.csp.sentinel.slots.block.BlockException;
 import com.alibaba.csp.sentinel.slots.block.RuleConstant;
 import com.alibaba.csp.sentinel.slots.block.flow.FlowRule;
 import com.alibaba.csp.sentinel.slots.block.flow.FlowRuleManager;
+import com.athena.sample.model.User;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -29,6 +34,12 @@ public class IndexController {
 
     private final Logger logger = LoggerFactory.getLogger(IndexController.class);
 
+    @Autowired
+    private User user;
+
+    @Autowired
+    private User user1;
+
     @GetMapping(value = "/index")
     public String index(){
         initFlowRules();
@@ -46,12 +57,17 @@ public class IndexController {
         return "index";
     }
 
-    @GetMapping("/listener")
+    @GetMapping(value = "/test/{test}")
+    public String test(@PathVariable String test){
+        return test;
+    }
+
+    @PostMapping("/listener")
     public void listener(HttpServletRequest request, HttpServletResponse response){
         AsyncContext asyncContext = request.startAsync();
         CompletableFuture.runAsync(()-> {
             try {
-                Thread.sleep(2000);
+                Thread.sleep(5000);
                 HttpServletResponse resp = (HttpServletResponse) asyncContext.getResponse();
                 resp.setStatus(HttpServletResponse.SC_OK);
                 resp.getWriter().println("asyncContext complete");
@@ -60,7 +76,6 @@ public class IndexController {
                 e.printStackTrace();
             }
         });
-
     }
 
 

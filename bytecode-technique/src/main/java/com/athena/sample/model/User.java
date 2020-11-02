@@ -1,8 +1,10 @@
-package com.athena.sample;
+package com.athena.sample.model;
+
 
 /**
  * @author yusheng
  */
+@AthenaRepository(name = "user")
 public class User {
 
     private Integer id;
@@ -23,13 +25,5 @@ public class User {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    @Override
-    public String toString() {
-        return "User{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                '}';
     }
 }
