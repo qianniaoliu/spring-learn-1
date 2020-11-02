@@ -10,9 +10,10 @@ public class DependencyLookupDemo {
 
     public static void main(String[] args) {
         AnnotationConfigApplicationContext applicationContext = new AnnotationConfigApplicationContext();
-        applicationContext.register(User.class);
+        applicationContext.register(DefaultEchoService.class);
         applicationContext.refresh();
-        ObjectProvider<User> userObjectProvider = applicationContext.getBeanProvider(User.class);
+        ObjectProvider<TestService> userObjectProvider = applicationContext.getBeanProvider(TestService.class);
+        ObjectProvider<EchoService> userObjectProvider1 = applicationContext.getBeanProvider(EchoService.class);
         applicationContext.close();
 
     }
