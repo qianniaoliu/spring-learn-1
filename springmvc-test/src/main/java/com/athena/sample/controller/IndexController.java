@@ -11,15 +11,14 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
+import org.springframework.core.annotation.AnnotationUtils;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.AsyncContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
@@ -59,7 +58,14 @@ public class IndexController {
 
     @GetMapping(value = "/test/{test}")
     public String test(@PathVariable String test){
-        return test;
+        Method method = null;
+        try {
+            method = IndexController.class.getMethod("test", String.class);
+        } catch (NoSuchMethodException e) {
+            e.printStackTrace();
+        }
+        RequestMapping requestMapping = AnnotationUtils.getAnnotation(method, RequestMapping.class);
+        return requestMapping.value()[0];
     }
 
     @PostMapping("/listener")

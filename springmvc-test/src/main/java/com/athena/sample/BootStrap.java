@@ -14,9 +14,10 @@ import org.springframework.context.annotation.Bean;
 public class BootStrap {
 
     public static void main(String[] args) {
-        ApplicationContext applicationContext = SpringApplication.run(BootStrap.class, args);
-        DefaultEchoServiceImpl defaultEchoService = applicationContext.getBean("defaultEchoServiceImpl", DefaultEchoServiceImpl.class);
-        defaultEchoService.hello();
+//        ApplicationContext applicationContext = SpringApplication.run(BootStrap.class, args);
+//        DefaultEchoServiceImpl defaultEchoService = applicationContext.getBean("defaultEchoServiceImpl", DefaultEchoServiceImpl.class);
+//        defaultEchoService.hello();
+        SpringApplication.run(BootStrap.class, args);
     }
 
     @Bean
