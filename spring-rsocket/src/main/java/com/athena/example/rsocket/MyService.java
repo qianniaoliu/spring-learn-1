@@ -18,6 +18,6 @@ public class MyService {
 
     public Mono<User> someRSocketCall(String name){
         return this.rSocketRequester.flatMap(req ->
-                req.route("user").data("name").retrieveMono(User.class));
+                req.route("user.get").data("name").retrieveMono(User.class));
     }
 }

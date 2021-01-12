@@ -18,5 +18,6 @@ public class ChatDemo {
         list.add(2);
         List<String> strList = list.stream().map(String::valueOf).collect(Collectors.toList());
         System.out.println(strList.contains(2));
+        System.out.println(1 << 0);
     }
 }

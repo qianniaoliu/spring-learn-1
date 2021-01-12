@@ -1,7 +1,6 @@
 package com.athena.example.rsocket;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.messaging.handler.annotation.DestinationVariable;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -16,8 +15,8 @@ public class TestController {
     private MyService myService;
 
 
-    @MessageMapping("user")
-    public User getUser(@DestinationVariable String name){
+    @MessageMapping("user.get")
+    public User getUser(String name){
         User user = new User();
         user.setId(110);
         user.setName(name);
@@ -26,10 +25,7 @@ public class TestController {
 
     @GetMapping("/remote")
     public User getRemote(){
-        myService.someRSocketCall("athena").doOnNext(user -> {
-            System.out.printf("lala" + user.getId());
-        }).subscribe();
-        return null;
+        return myService.someRSocketCall("athena").block();
     }
 
 }

@@ -12,8 +12,10 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.core.annotation.AnnotationUtils;
+import org.springframework.http.MediaType;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.AsyncContext;
 import javax.servlet.http.HttpServletRequest;
@@ -40,16 +42,16 @@ public class IndexController {
     private User user1;
 
     @GetMapping(value = "/index")
-    public String index(){
+    public String index() {
         initFlowRules();
         Entry entry = null;
         try {
             entry = SphU.entry("HelloWorld");
-        }catch (BlockException ex){
+        } catch (BlockException ex) {
             logger.info("被限流了");
             return "被限流了";
-        }finally {
-            if(entry != null){
+        } finally {
+            if (entry != null) {
                 entry.exit();
             }
         }
@@ -57,7 +59,7 @@ public class IndexController {
     }
 
     @GetMapping(value = "/test/{test}")
-    public String test(@PathVariable String test){
+    public String test(@PathVariable String test) {
         Method method = null;
         try {
             method = IndexController.class.getMethod("test", String.class);
@@ -69,9 +71,9 @@ public class IndexController {
     }
 
     @PostMapping("/listener")
-    public void listener(HttpServletRequest request, HttpServletResponse response){
+    public void listener(HttpServletRequest request, HttpServletResponse response) {
         AsyncContext asyncContext = request.startAsync();
-        CompletableFuture.runAsync(()-> {
+        CompletableFuture.runAsync(() -> {
             try {
                 Thread.sleep(5000);
                 HttpServletResponse resp = (HttpServletResponse) asyncContext.getResponse();
@@ -85,8 +87,7 @@ public class IndexController {
     }
 
 
-
-    private static void initFlowRules(){
+    private static void initFlowRules() {
         List<FlowRule> rules = new ArrayList<>();
         FlowRule rule = new FlowRule();
         rule.setResource("HelloWorld");
@@ -110,4 +111,20 @@ public class IndexController {
         });
         System.out.println(22);
     }
+
+    @GetMapping("/rest/index")
+    public String hello(@RequestParam String message) {
+        return "监听到远程调用消息啦,message:" + message;
+    }
+
+    @PostMapping(value = "/rest/file", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    public String file(@RequestParam(value = "message") MultipartFile message) {
+        return "监听到远程调用消息啦,message:";
+    }
+
+    @RequestMapping("/subsStatus.html")
+    public String testForm(String imsi, String IMSIshow, HttpServletRequest request){
+        return "SUCCESS";
+    }
+
 }
